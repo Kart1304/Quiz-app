@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Data Visualization</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-chart-line"></i> Interactive Data Visualization</h1>
+            <div class="theme-toggle">
+                <i class="fas fa-sun"></i>
+                <label class="switch">
+                    <input type="checkbox" id="theme-switch">
+                    <span class="slider round"></span>
+                </label>
+                <i class="fas fa-moon"></i>
+            </div>
+        </header>
+        
+        <main>
+            <div class="controls-panel">
+                <div class="data-selector">
+                    <h3>Data Source</h3>
+                    <div class="selector-options">
+                        <button class="selector-btn active" data-source="sales">Sales Data</button>
+                        <button class="selector-btn" data-source="website">Website Traffic</button>
+                        <button class="selector-btn" data-source="temperature">Temperature</button>
+                        <button class="selector-btn" data-source="custom">Custom Data</button>
+                    </div>
+                </div>
+                
+                <div class="chart-selector">
+                    <h3>Chart Type</h3>
+                    <div class="selector-options">
+                        <button class="chart-btn active" data-type="bar">
+                            <i class="fas fa-chart-bar"></i> Bar
+                        </button>
+                        <button class="chart-btn" data-type="line">
+                            <i class="fas fa-chart-line"></i> Line
+                        </button>
+                        <button class="chart-btn" data-type="pie">
+                            <i class="fas fa-chart-pie"></i> Pie
+                        </button>
+                        <button class="chart-btn" data-type="radar">
+                            <i class="fas fa-spider"></i> Radar
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="time-range">
+                    <h3>Time Range</h3>
+                    <div class="selector-options">
+                        <button class="time-btn active" data-range="week">Week</button>
+                        <button class="time-btn" data-range="month">Month</button>
+                        <button class="time-btn" data-range="quarter">Quarter</button>
+                        <button class="time-btn" data-range="year">Year</button>
+                    </div>
+                </div>
+                
+                <div class="custom-data-form" id="custom-data-form">
+                    <h3>Custom Data Input</h3>
+                    <p class="form-info">Enter comma-separated values for labels and data</p>
+                    <div class="form-group">
+                        <label for="custom-labels">Labels:</label>
+                        <input type="text" id="custom-labels" placeholder="e.g. Jan, Feb, Mar, Apr">
+                    </div>
+                    <div class="form-group">
+                        <label for="custom-data">Data:</label>
+                        <input type="text" id="custom-data" placeholder="e.g. 10, 25, 15, 30">
+                    </div>
+                    <button id="apply-custom-data" class="btn primary-btn">Apply Data</button>
+                </div>
+            </div>
+            
+            <div class="visualization-panel">
+                <div class="chart-container">
+                    <canvas id="data-chart"></canvas>
+                </div>
+                
+                <div class="data-insights">
+                    <h3>Data Insights</h3>
+                    <div class="insights-grid">
+                        <div class="insight-card">
+                            <div class="insight-icon">
+                                <i class="fas fa-arrow-trend-up"></i>
+                            </div>
+                            <div class="insight-content">
+                                <h4>Highest Value</h4>
+                                <p id="highest-value">0</p>
+                            </div>
+                        </div>
+                        <div class="insight-card">
+                            <div class="insight-icon">
+                                <i class="fas fa-arrow-trend-down"></i>
+                            </div>
+                            <div class="insight-content">
+                                <h4>Lowest Value</h4>
+                                <p id="lowest-value">0</p>
+                            </div>
+                        </div>
+                        <div class="insight-card">
+                            <div class="insight-icon">
+                                <i class="fas fa-calculator"></i>
+                            </div>
+                            <div class="insight-content">
+                                <h4>Average</h4>
+                                <p id="average-value">0</p>
+                            </div>
+                        </div>
+                        <div class="insight-card">
+                            <div class="insight-icon">
+                                <i class="fas fa-sum"></i>
+                            </div>
+                            <div class="insight-content">
+                                <h4>Total</h4>
+                                <p id="total-value">0</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <div class="export-options">
+            <button id="export-image" class="btn secondary-btn">
+                <i class="fas fa-image"></i> Export as Image
+            </button>
+            <button id="export-data" class="btn secondary-btn">
+                <i class="fas fa-file-csv"></i> Export Data
+            </button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
